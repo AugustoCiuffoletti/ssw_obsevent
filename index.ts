@@ -2,10 +2,13 @@
 import { Observable, fromEvent } from "rxjs";
 
 var t0 = 0;
-const button = document.getElementById("myButton");
-const myObservable = fromEvent(button, "click");
-const subscription = myObservable.subscribe(event => {
-  var t1 = event.timeStamp;
+function eventCallback(e) {
+  let t1 = e.timeStamp;
   console.log(t1 - t0);
   t0 = t1;
+}
+const button = document.getElementById("myButton");
+const obs = fromEvent(button, "click");
+obs.subscribe({
+  next: eventCallback
 });
