@@ -1,8 +1,8 @@
 // Calcola l'intervallo (in ms) dall'ultimo click
-import { Observable, fromEvent } from "rxjs";
+import { fromEvent } from "rxjs";
 
 var t0 = 0;
-function eventCallback(e) {
+function eventCallback(e: Event) {
   let t1 = e.timeStamp;
   console.log(t1 - t0);
   t0 = t1;
