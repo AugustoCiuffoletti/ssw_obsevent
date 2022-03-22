@@ -1,5 +1,5 @@
 // Calcola l'intervallo (in ms) dall'ultimo click
-import { fromEvent } from "rxjs";
+import { fromEvent, Observable } from "rxjs";
 
 var t0 = 0;
 function eventCallback(e: Event) {
@@ -7,8 +7,8 @@ function eventCallback(e: Event) {
   console.log(t1 - t0);
   t0 = t1;
 }
-const button = document.getElementById("myButton");
-const obs = fromEvent(button, "click");
+const button: HTMLElement = document.getElementById("myButton");
+const obs: Observable<Event> = fromEvent(button, "click");
 obs.subscribe({
   next: eventCallback
 });
